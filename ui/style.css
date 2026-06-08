@@ -1,0 +1,167 @@
+/* =========================================
+   NVG UI Styles - GameFace 100% Compatible
+   Optimized for Chinese text & Fully Documented
+   ========================================= */
+
+body, html {
+    padding: 0; /* 清除默认内边距，防止UI出现白边 */
+    margin: 0; /* 清除默认外边距 */
+    width: 100%; /* 占满视口宽度 */
+    height: 100%; /* 占满视口高度 */
+    background: transparent; /* 背景透明，不遮挡游戏画面 */
+    overflow: hidden; /* 隐藏滚动条，防止UI元素溢出屏幕 */
+    font-family: 'OpenType'; /* 全局字体族 | 需确保字体文件已正确注册 */
+}
+
+/* 🔹 提示区域容器 - 优化中文显示 */
+.bf3-blue-block {
+    background-color: #0065b969; /* 背景色 (RGB + Alpha十六进制) | 改前6位调颜色，改后2位调透明度 */
+    border-radius: 3px; /* 圆角半径 | 调大=更圆润，调小=更方正 */
+    opacity: 0.8; /* 整体透明度 (0.0~1.0) | 调小=更透明，调大=更实 */
+    box-shadow: 0 0 4px 1px #0f83e466; /* 外发光 (X偏移 Y偏移 模糊半径 扩散半径 颜色) | 调模糊/扩散控制光晕大小 */
+    
+    display: block; /* 块级元素，独占一行 */
+    position: relative; /* 相对定位，作为内部 absolute 子元素的定位参考系 */
+    
+    min-width: 180px; /* 最小宽度限制 | 防止文字过长时背景框被压缩变形 */
+    width: auto; /* 宽度自适应内容或父容器 */
+    
+    padding: 8px 16px; /* 内边距 (上下 左右) | 控制文字/图标与蓝色背景框边缘的安全距离 */
+    
+    position: absolute; /* 绝对定位，脱离文档流，相对于浏览器视口定位 */
+    bottom: 35%; /* 距屏幕底部百分比 | 调大=上移，调小=下移 */
+    right: 3%; /* 距屏幕右侧百分比 | 调大=左移，调小=右移 */
+    z-index: 9999; /* 层级堆叠顺序 | 数值越大越靠前，确保不被游戏HUD遮挡 */
+}
+
+/* 🔹 图标：绝对定位 */
+.goggles-hint-icon {
+    width: 22px; /* 图标宽度 | 需与图片实际像素匹配，防止拉伸 */
+    height: 16px; /* 图标高度 */
+    position: absolute; /* 绝对定位，精确固定在容器内 */
+    left: 12px; /* 距容器左边缘距离 | 与 .bf3-blue-block 的 padding-left 对齐 */
+    top: 12px; /* 距容器上边缘距离 | 控制图标垂直起始位置 */
+}
+
+.hint {
+    font-family: 'OpenType'; /* 局部字体覆盖 | 可独立于全局设置 */
+    font-size: 16px; /* 基础字号 | 影响行高与文字大小的基准 */
+    color: #fff; /* 文字颜色 (白色) */
+    text-align: left; /* 文本左对齐 */
+    line-height: 1.2; /* 行高倍数 (1.2倍字号) | 控制多行文本的垂直密度 */
+    display: block; /* 块级显示，撑满可用宽度 */
+    padding-left: 0; /* 左侧内边距清零 | 位置控制权已移交子元素 margin */
+}
+
+.title-text {
+    margin: 0; /* 外边距清零，避免浏览器默认样式干扰 */
+    padding: 0; /* 内边距清零 */
+    
+    /* 🎛️ 旋钮 1：水平位置（调大=右移，调小=左移） */
+    margin-left: 38px; 
+    
+    line-height: 18px; /* 覆盖父级行高，固定第一行高度 | 确保与图标高度视觉匹配 */
+    white-space: nowrap; /* 强制不换行 | 防止长文本意外折行破坏布局 */
+    
+    /* 🎛️ 旋钮 2：标题加粗程度 (100~900) */
+    font-weight: 500; /* 400=常规, 500=中等, 700=加粗 | GameFace 支持数值映射 */
+}
+
+/* 🔹 第二行：容器（只负责横向排列，不干涉位置） */
+.action-row {
+    /* 🎛️ 旋钮 3：行间距（调大=两行分开，调小=两行靠近） */
+    margin-top: 12px; /* 控制“夜视仪”与下方操作行的垂直距离 */
+    
+    white-space: nowrap; /* 强制本行内容不换行 */
+    display: flex; /* 启用 Flex 布局 | 子元素自动横向排列 */
+    align-items: center; /* 垂直居中对齐 | 确保 [7] 和文字在同一水平线上 */
+}
+
+/* 🔹 [7] 蓝色按键横幅 */
+.key-badge {
+    background-color: #62c5ffb8; /* 背景色 (含透明度) | 蓝色半透明 */
+    color: #fff; /* 文字颜色 (白色) */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* 文字阴影 (X Y 模糊 颜色) | 增加文字立体感/防高光穿透 */
+    
+    /* 🎛️ 旋钮 4：蓝色 Bar 高度控制 */
+    padding-top: 0px;    /* 上内边距 | 调大=Bar变高，文字下移 */
+    padding-bottom: 0px; /* 下内边距 | 调大=Bar变高，文字上移 */
+    padding-left: 0px;   /* 左内边距 | 控制文字距Bar左边缘距离 */
+    padding-right: 0px;  /* 右内边距 | 控制文字距Bar右边缘距离 */
+    
+    /* 🎛️ 旋钮 5：文字行高（辅助压缩 Bar 高度） */
+    line-height: 1.2; /* 1.0最扁, 1.2正常 | 配合 padding 微调 Bar 紧凑度 */
+    
+    border-radius: 2px; /* 圆角半径 | 控制蓝色横幅四角圆润程度 */
+    box-shadow: 0 0 2px 1px #62c5ffb8; /* 外发光 | 让横幅有轻微泛光效果，融合背景 */
+    font-size: 15px; /* 专属字号 | 可独立于 .hint 调整大小 */
+    
+    /* 🎛️ 旋钮 6：[7] 单独加粗 (100~900) */
+    font-weight: 900; /* 注：CSS标准上限为900，GameFace会自动钳制到900(极粗)渲染 | 建议规范写900 */
+    
+    /* ️ 旋钮 7：[7] 水平微调（调大=右移，调小=左移） */
+    margin-left: -4px; /* 负值可向左拉回，抵消父级 flex 的默认间距 */
+    margin-right: 0; /* 右侧外边距清零 */
+}
+
+/* 🔹 “启用/禁用”文字 */
+.action-text {
+    font-size: 15px; /* 专属字号 */
+    color: #fff; /* 文字颜色 */
+    
+    /* ️ 旋钮 8：汉字单独加粗 (100~900) */
+    font-weight: 900; /* 同上，GameFace 会按 900(极粗) 渲染 | 需与 [7] 保持视觉协调 */
+    
+    /* 🎛️ 旋钮 9：汉字与 [7] 的间距（调大=离得更远） */
+    margin-left: 20px; /* 正外边距，推开与左侧元素的距离 */
+}
+
+/* 🔹 右下角图标区域 (夜视仪状态+电池) */
+#goggles {
+    position: absolute; /* 绝对定位 */
+    bottom: 0.5%; /* 距底部距离 | 调大=上移，调小=下移 */
+    right: 4%; /* 距右侧距离 */
+    padding: 2px 4px 4px 4px; /* 内边距 (上 右 下 左) | 底部留4px防贴边 */
+    opacity: 0.70; /* 透明度 | 0.7 保持半透明悬浮感 */
+    z-index: 9999; /* 顶层显示 */
+    
+    display: flex; /* Flex 布局 */
+    flex-direction: row; /* 子元素横向排列 */
+    align-items: flex-end; /* 底部对齐 | 让较高的图标自然下沉，形成高低错落感 */
+    
+    box-shadow: 0 0 4px 2px #52b0ff66; /* 底部图标组外发光 | 增强UI存在感 */
+}
+
+#goggles-icon {
+    width: 28px; /* 图标宽度 */
+    height: 20px; /* 图标高度 */
+    flex-shrink: 0; /* 禁止Flex容器压缩此元素 | 保持图标原始比例 */
+    margin-right: 4px; /* 与右侧电池的间距 */
+}
+
+#goggles-battery-icon {
+    width: 9px; /* 电池图标宽度 */
+    height: 14px; /* 电池图标高度 */
+    flex-shrink: 0; /* 禁止压缩 */
+    margin-bottom: 2px; /* 底部外边距 | 配合 align-items: flex-end 制造视觉落差 */
+}
+
+/* 🔹 动画 (低电量/切换警告) */
+.bounce {
+    box-shadow: 0 0 6px 2px #ff5252 !important; /* 警告时红光泛光 | !important 确保覆盖原样式 */
+    animation-name: bounce; /* 绑定动画名称 */
+    animation-duration: .5s; /* 动画总时长 (秒) */
+    animation-delay: 0.25s; /* 延迟启动时间 (秒) */
+}
+
+@keyframes bounce {
+    /* 关键帧定义左右晃动效果 | 0%~100% 为完整周期，GameFace 完美支持 translateX */
+    0% { transform: translateX(0px); }
+    37% { transform: translateX(5px); }
+    55% { transform: translateX(-5px); }
+    73% { transform: translateX(4px); }
+    82% { transform: translateX(-4px); }
+    91% { transform: translateX(2px); }
+    96% { transform: translateX(-2px); }
+    100% { transform: translateX(0px); }
+}
